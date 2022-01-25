@@ -74,7 +74,7 @@ setUp();
 
 
 
-const gameOver = (list) => {
+const gameOver = () => {
 
     let isGameOver = true;
     for (let i = 0; i < carsList.length; i++) {
@@ -89,7 +89,7 @@ const gameOver = (list) => {
 const showResult = (list) => {
     const resultDisplay = document.getElementById('result');
 
-    carsList.forEach((car) => {
+    list.forEach((car) => {
         const newRes = document.createElement('div');
         const secondsTime = car.time / 1000;
         newRes.append(`${car.name}: ${secondsTime.toFixed(3)} secondi`);
@@ -104,7 +104,7 @@ const goBtn = document.getElementById('start-button');
 goBtn.addEventListener('click', () => {
     let interval = 50;
     const movingCar = setInterval(() => {
-        if (gameOver(carsList)) {
+        if (gameOver()) {
             showResult(carsList);
             clearInterval(movingCar);
         } else {
