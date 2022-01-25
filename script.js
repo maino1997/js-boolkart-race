@@ -72,22 +72,57 @@ const getCar = (car) => {
 
 setUp();
 
+
+
+const gameOver = (list) => {
+
+    let isGameOver = true;
+    for (let i = 0; i < carsList.length; i++) {
+        if (carsList[i].currentPosition < 600) {
+            isGameOver = false;
+        }
+    }
+
+    return isGameOver;
+};
+
+const showResult = (list) => {
+    const resultDisplay = document.getElementById('result');
+
+    carsList.forEach((car) => {
+        const newRes = document.createElement('div');
+        const secondsTime = car.time / 1000;
+        newRes.append(`${car.name}: ${secondsTime.toFixed(3)} secondi`);
+        resultDisplay.appendChild(newRes);
+    });
+};
+
+
+
 const goBtn = document.getElementById('start-button');
 
 goBtn.addEventListener('click', () => {
+    let interval = 50;
     const movingCar = setInterval(() => {
-        carsList.forEach((car) => {
-            carItem = document.getElementById(car.id);
+        if (gameOver(carsList)) {
+            showResult(carsList);
+            clearInterval(movingCar);
+        } else {
+            carsList.forEach((car) => {
+                carItem = document.getElementById(car.id);
 
-            if (car.currentPosition >= 600) {
-                carItem.style.left = "600px";
-                // clearInterval(movingCar);
-            } else {
-                car.currentPosition += car.speed;
-                carItem.style.left = `${car.currentPosition}px`;
-            }
-        });
+                if (car.currentPosition >= 600) {
+                    carItem.style.left = "605px";
+                    // clearInterval(movingCar);
+                } else {
+                    car.currentPosition += car.speed;
+                    carItem.style.left = `${car.currentPosition}px`;
+                    car.time += interval;
+                }
 
-    }, 100);
+            });
+        }
+
+    }, interval);
 });
 
