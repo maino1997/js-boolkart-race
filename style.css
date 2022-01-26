@@ -48,7 +48,7 @@ img{
     position: absolute;
     left: 0;
     top: 20px;
-    transition: 0.05s linear;
+    transition: 0.01s linear;
 }
 
 .nome{
