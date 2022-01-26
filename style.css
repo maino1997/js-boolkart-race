@@ -20,24 +20,26 @@ body{
 }
 
 .game-col{
+    margin-top: 50px;
     width: 700px;
     border: 1px solid white;
 }
 
 .result-col{
+    margin-top: 50px;
     width: 600px;
     padding: 20px;
+    text-align: center;
 }
 
-#start-button{
-    text-align: center;
+#start-button{ 
     cursor: pointer;
 }
 
 .road {
     height: 60px;
     width: 600px;
-    margin: 10px 0;
+    margin: 10px 0 0 10px;
     position: relative;
     border-bottom: 3px dashed white;
 }
@@ -56,4 +58,8 @@ img{
     position: absolute;
     left: 10px;
     top: 0;
+}
+
+#result{
+    margin-top: 40px;
 }
